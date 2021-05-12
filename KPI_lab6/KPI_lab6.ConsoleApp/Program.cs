@@ -41,15 +41,16 @@ namespace KPI_lab6.ConsoleApp
                     {
                         Console.WriteLine("Password is wrong! Try again!");
                     }
-                    Console.WriteLine("Completed");
+                    Console.WriteLine("Completed"); 
+                    
                 }
                 else
                 {
                     Console.WriteLine("There is no such user");
                 }
             }
-            
             Courses(currentUser);
+           
         }
 
         private static User RegisterUser()
@@ -113,6 +114,27 @@ namespace KPI_lab6.ConsoleApp
                     {
                         user.Courses[courseIndex].Themes =
                             FileManager.GetThemes(standartCoursesPath + '\\' + user.Courses[courseIndex].Name);
+                        Console.WriteLine("1 - Choose lection");
+                        Console.WriteLine("2 - Pass test");
+                        Console.WriteLine("Input your choice: ");
+                        String input = Console.ReadLine();
+                        while (input!="1"&&input!="2")
+                        {
+                            Console.WriteLine("Wrong answer! Try again: ");
+                        }
+                        if (input=="1")
+                        {
+                            var lections = user.GetLections(courseIndex);
+                            for (int i = 0; i < lections.Count; i++)
+                            {
+                                Console.WriteLine($"{i+1} - {lections[i].Name}");
+                            }
+
+                            Console.WriteLine("Choose lection: ");
+                            int lecId = int.Parse(Console.ReadLine())-1;
+                            Console.Clear();
+                            Console.WriteLine(lections[lecId]);
+                        }
                     }
                     else Console.WriteLine("Wrong input");
                     break;
@@ -120,7 +142,7 @@ namespace KPI_lab6.ConsoleApp
             }
         }
 
-        public static User OpenUser(String name)
+        private static User OpenUser(String name)
         {
             return FileManager.OpenUser(standartUserPath, name);
         }

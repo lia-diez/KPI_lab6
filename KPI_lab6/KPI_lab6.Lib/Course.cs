@@ -27,7 +27,7 @@ namespace KPI_lab6.Lib
         public Course(string name, int currentTheme)
         {
             Name = name;
-            _currentTheme = currentTheme;
+            _currentTheme = currentTheme-1;
         }
     }
 }
