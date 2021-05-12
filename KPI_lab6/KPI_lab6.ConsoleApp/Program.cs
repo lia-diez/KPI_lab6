@@ -7,6 +7,9 @@ namespace KPI_lab6.ConsoleApp
 {
     class Program
     {
+        static String standartUserPath = @"../../../../Resources/Users";
+        static String standartCourcesPath = @"../../../../Resources/Cources";
+
         static void Main(string[] args)
         {
             Console.WriteLine();
@@ -21,42 +24,53 @@ namespace KPI_lab6.ConsoleApp
                 inputStr = Console.ReadLine();
             }
 
-            String standartUserPath = @"../../../../Resources/Users";
-            String standartCourcesPath = @"../../../../Resources/Cources";
-
-
+            User currentUser;
             if (inputStr == "1")
             {
-                Console.WriteLine("Input users name: ");
-                String name = Console.ReadLine();
-
-                if (FileManager.CheckFile(standartUserPath, name + ".us"))
-                {
-                    Console.WriteLine("User already exists!");
-                }
-                else
-                {
-                    Console.WriteLine("Input your password: ");
-                    String password = Console.ReadLine();
-
-                    Console.WriteLine("Confirm your password: ");
-                    while (Console.ReadLine() != password)
-                    {
-                        Console.WriteLine("Try again!");
-                        Console.WriteLine("Confirm your password: ");
-                    }
-
-                    Console.WriteLine("Completed! ");
-
-                    String path = standartUserPath + "/" + name + ".us";
-
-                    FileManager.CreateAndWrite(path, password + "\n");
-                }
+                currentUser=RegisterUser();
             }
             else if (inputStr == "2")
             {
                 Console.WriteLine("Log In");
             }
+        }
+
+        private static User RegisterUser()
+        {
+            Console.WriteLine("Input users name: ");
+            String name = Console.ReadLine();
+
+            if (FileManager.CheckFile(standartUserPath, name + ".us"))
+            {
+                Console.WriteLine("User already exists!");
+                return null;
+            }
+
+            Console.WriteLine("Input your password: ");
+            String password = Console.ReadLine();
+
+            Console.WriteLine("Confirm your password: ");
+            while (Console.ReadLine() != password)
+            {
+                Console.WriteLine("Try again!");
+                Console.WriteLine("Confirm your password: ");
+            }
+
+            Console.WriteLine("Completed! ");
+
+            User currUser = new User();
+            currUser.RegisterUser(name, password);
+
+            String path = standartUserPath + "/" + name + ".us";
+
+            FileManager.CreateAndWrite(path, password + "\n");
+            return currUser;
+
+        }
+
+        private static User OpenUser(String name)
+        {
+            
         }
     }
 }
