@@ -50,7 +50,7 @@ namespace KPI_lab6.ConsoleApp
                 }
             }
             Courses(currentUser);
-           
+            
         }
 
         private static User RegisterUser()
