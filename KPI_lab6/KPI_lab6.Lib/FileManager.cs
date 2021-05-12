@@ -86,5 +86,10 @@ namespace KPI_lab6.Lib
 
             return themes;
         }
+
+        public static string GetNameFromPath(string path)
+        {
+            return path.Split('\\')[path.Split('\\').Length - 1].Split('.')[0];
+        }
     }
 }
