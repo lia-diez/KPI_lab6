@@ -53,10 +53,15 @@ namespace KPI_lab6.Lib
             string result = "";
             for (int i = 0; i < _courses.Count; i++)
             {
-                result += $"{i}. {_courses[i].Name}'\n'";
+                result += $"{i}. {_courses[i].Name}\n";
             }
 
             Console.WriteLine(result);
+        }
+
+        public List<Lection> GetLections(int id)
+        {
+            return Courses[id].Themes[Courses[id].CurrentTheme].Lections;
         }
     }
 }

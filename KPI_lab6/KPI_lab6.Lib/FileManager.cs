@@ -75,11 +75,12 @@ namespace KPI_lab6.Lib
             foreach (var name in themesNames)
             {
                 List<Lection> lections = new List<Lection>();
-                foreach (var lecpath in GetFiles($@"{path}\{name}\Lections\"))
+                var files = GetFiles($@"{name}\Lections");
+                foreach (var lecpath in files)
                 {
-                    lections.Add(new Lection(String.Join('\n', ReadFile(lecpath))));
+                    lections.Add(new Lection(String.Join('\n', ReadFile(lecpath)), lecpath.Split('\\')[lecpath.Split('\\').Length-1].Split('.')[0]));
                 }
-                Test test = new Test(ReadFile($@"{path}\{name}\test.test").ToArray());
+                Test test = new Test(ReadFile($@"{name}\test.test").ToArray());
                 themes.Add(new Theme(name, lections, test));
             }
 

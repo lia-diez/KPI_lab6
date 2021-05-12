@@ -48,9 +48,8 @@ namespace KPI_lab6.ConsoleApp
                     Console.WriteLine("There is no such user");
                 }
             }
-
+            
             Courses(currentUser);
-            Console.WriteLine("End");
         }
 
         private static User RegisterUser()

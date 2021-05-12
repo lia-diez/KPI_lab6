@@ -1,9 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace KPI_lab6.Lib
 {
     public class Theme
     {
+        public List<Lection> Lections
+        {
+            get
+            {
+                return _lections;
+            }
+        }
         private string _name;
         private List<Lection> _lections;
         private Test _test;
@@ -12,10 +20,10 @@ namespace KPI_lab6.Lib
 
         public Theme(string name, List<Lection> lections, Test test)
         {
-            _name = name;
+            _name = name.Split('\\')[name.Split('\\').Length-1];
             _lections = lections;
             _test = test;
-            _number = int.Parse(name.Split('.')[0]);
+            _number = int.Parse(_name.Split('.')[0]);
         }
     }
 }

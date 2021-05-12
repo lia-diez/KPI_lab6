@@ -13,6 +13,14 @@ namespace KPI_lab6.Lib
             set => _themes = value;
         }
 
+        public int CurrentTheme
+        {
+            get
+            {
+                return _currentTheme;
+            }
+        }
+
         private int _percentage;
         private int _currentTheme;
 
