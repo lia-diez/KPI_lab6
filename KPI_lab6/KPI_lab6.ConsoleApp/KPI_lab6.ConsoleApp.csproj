@@ -6,4 +6,8 @@
         <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\KPI_lab6.Lib\KPI_lab6.Lib.csproj" />
+    </ItemGroup>
+
 </Project>

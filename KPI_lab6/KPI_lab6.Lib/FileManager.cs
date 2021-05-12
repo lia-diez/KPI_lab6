@@ -33,13 +33,18 @@ namespace KPI_lab6.Lib
             return data;
         }
 
-        public void WriteToFile(string text)
+        public static void CreateAndWrite(String path,string text )
         {
-            using (FileStream fs = new FileStream(Path + "\\results.csv", FileMode.Create))
-            {
-                byte[] array = System.Text.Encoding.Default.GetBytes(String.Join("\n", text));
-                fs.Write(array, 0, array.Length);
-            }
+            using FileStream fs = new FileStream(path, FileMode.Create);
+            byte[] array = System.Text.Encoding.Default.GetBytes(String.Join("\n", text));
+            fs.Write(array, 0, array.Length);
+        }
+
+        public static void Write(String path, string text)
+        {
+            using FileStream fs = new FileStream(path, FileMode.Append);
+            byte[] array = System.Text.Encoding.Default.GetBytes(String.Join("\n", text));
+            fs.Write(array);
         }
     }
 }
