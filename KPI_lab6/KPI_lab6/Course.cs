@@ -8,5 +8,6 @@ namespace KPI_lab6
         private List<Theme> _themes;
         private int _numberOfThemes;
         private int _percentage;
+        private int _currentTheme;
     }
 }
