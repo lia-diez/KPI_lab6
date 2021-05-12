@@ -32,3 +32,8 @@ _UpgradeReport_Files/
 Thumbs.db
 Desktop.ini
 .DS_Store
+KPI_lab6/KPI_lab6.ConsoleApp/.dockerignore
+
+KPI_lab6/KPI_lab6.ConsoleApp/Dockerfile
+
+KPI_lab6/.idea/.idea.KPI_lab6/.idea/
