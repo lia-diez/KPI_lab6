@@ -16,6 +16,11 @@ namespace KPI_lab6.Lib
 
         public string[] GetFiles() => Directory.GetFiles(Path).ToArray();
 
+        public bool CheckFile(string path, string name)
+        {
+            return String.Join("$", Directory.GetFiles(path)).Contains(path+'\\'+name);
+        }
+
         public List<string> ReadFile(string filePath)
         {
             List<string> data = new List<string>();

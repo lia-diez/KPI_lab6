@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Channels;
+using KPI_lab6;
+using KPI_lab6.Lib;
 
 namespace KPI_lab6.ConsoleApp
 {
@@ -16,8 +18,7 @@ namespace KPI_lab6.ConsoleApp
                 Console.WriteLine("1 - Register");
                 Console.WriteLine("2 - Log In");
             }
-            
-            
+
         }
     }
 }
