@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Threading.Channels;
-using KPI_lab6;
 using KPI_lab6.Lib;
 
 namespace KPI_lab6.ConsoleApp
@@ -8,8 +6,8 @@ namespace KPI_lab6.ConsoleApp
     class Program
     {
         static String standartUserPath = @"../../../../Resources/Users";
-        static String standartCourcesPath = @"../../../../Resources/Cources";
-
+        static String standartCoursesPath = @"../../../../Resources/Courses";
+        
         static void Main(string[] args)
         {
             Console.WriteLine();
@@ -86,9 +84,29 @@ namespace KPI_lab6.ConsoleApp
             return currUser;
         }
 
-        private static User OpenUser(String name)
+        public static void Courses()
         {
-            return FileManager.OpenUser(standartUserPath, name);
+            Console.WriteLine();
+
+            String inputStr = "";
+            while (inputStr != "1" && inputStr != "2" && inputStr != "3")
+            {
+                Console.Clear();
+                Console.WriteLine("1 - Check my courses");
+                Console.WriteLine("2 - Choose course");
+                Console.WriteLine("3 - Add new course");
+                Console.WriteLine("Please choose your variant:");
+                inputStr = Console.ReadLine();
+            }
+
+            switch (inputStr)
+            {
+                case "1":
+                {
+                    
+                    break;
+                }
+            }
         }
     }
 }
