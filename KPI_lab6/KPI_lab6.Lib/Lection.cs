@@ -2,7 +2,11 @@
 {
     public class Lection
     {
-        private string[] _text;
-        
+        private string _text;
+
+        public Lection(string text)
+        {
+            _text = text;
+        }
     }
 }

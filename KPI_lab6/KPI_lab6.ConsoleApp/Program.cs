@@ -49,6 +49,7 @@ namespace KPI_lab6.ConsoleApp
                 }
             }
 
+            Courses(currentUser);
             Console.WriteLine("End");
         }
 
@@ -109,8 +110,12 @@ namespace KPI_lab6.ConsoleApp
                 case "2":
                 {
                     Console.WriteLine("Enter the index of the course");
-                    if (int.TryParse(Console.ReadLine(), out int courseIndex) && courseIndex<user.NumberOfCourses);
-                    
+                    if (int.TryParse(Console.ReadLine(), out int courseIndex) && courseIndex < user.NumberOfCourses)
+                    {
+                        user.Courses[courseIndex].Themes =
+                            FileManager.GetThemes(standartCoursesPath + '\\' + user.Courses[courseIndex].Name);
+                    }
+                    else Console.WriteLine("Wrong input");
                     break;
                 }
             }

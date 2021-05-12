@@ -11,13 +11,19 @@ namespace KPI_lab6.Lib
         private string _password;
         private List<Course> _courses;
 
+        public List<Course> Courses
+        {
+            get => _courses;
+            set => _courses = value;
+        }
+
         public String Password {
             get
             {
                 return _password;
             }
     }
-        public int NumberOfCourses => _courses.Count;
+        public int NumberOfCourses = 0;
 
         public User(string login, string password)
         {
@@ -29,6 +35,7 @@ namespace KPI_lab6.Lib
         public void AddCouse(String name, int theme=0)
         {
             _courses.Add(new Course(name,theme));
+            NumberOfCourses++;
         }
 
         public User()
@@ -46,7 +53,7 @@ namespace KPI_lab6.Lib
             string result = "";
             for (int i = 0; i < _courses.Count; i++)
             {
-                result += "i" + ". " + _courses[i].Name + '\n';
+                result += $"{i}. {_courses[i].Name}'\n'";
             }
 
             Console.WriteLine(result);

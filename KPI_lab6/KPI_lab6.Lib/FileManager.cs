@@ -15,13 +15,15 @@ namespace KPI_lab6.Lib
         }
 
         public static string[] GetFiles(String path) => Directory.GetFiles(path).ToArray();
+        
+        public static string[] GetDirectories(String path) => Directory.GetDirectories(path).ToArray();
 
         public static bool CheckFile(string path, string name)
         {
             return String.Join("$", Directory.GetFiles(path)).Contains(path+'\\'+name);
         }
 
-        public List<string> ReadFile(string filePath)
+        public static List<string> ReadFile(string filePath)
         {
             List<string> data = new List<string>();
             using (StreamReader sr = new StreamReader(filePath))
@@ -64,8 +66,24 @@ namespace KPI_lab6.Lib
                 }
                 return user;
             }
+        }
 
-            
+        public static List<Theme> GetThemes(string path)
+        {
+            List<Theme> themes = new List<Theme>();
+            string[] themesNames = GetDirectories(path);
+            foreach (var name in themesNames)
+            {
+                List<Lection> lections = new List<Lection>();
+                foreach (var lecpath in GetFiles($@"{path}\{name}\Lections\"))
+                {
+                    lections.Add(new Lection(String.Join('\n', ReadFile(lecpath))));
+                }
+                Test test = new Test(ReadFile($@"{path}\{name}\test.test").ToArray());
+                themes.Add(new Theme(name, lections, test));
+            }
+
+            return themes;
         }
     }
 }

@@ -2,8 +2,13 @@
 {
     public class Test
     {
-        private string[] _tasks;
+        private string[,] _tasks;
         private int _pointsForTask;
         private int _maxPoint;
+
+        public Test(string[] input)
+        {
+            _tasks = new string[input.Length,2];
+        }
     }
 }
