@@ -49,5 +49,23 @@ namespace KPI_lab6.Lib
             byte[] array = System.Text.Encoding.Default.GetBytes(String.Join("\n", text));
             fs.Write(array);
         }
+
+        public static User OpenUser(String path, String name)
+        {
+            using (StreamReader streamReader = new StreamReader(new FileStream(path+"/"+name+".us", FileMode.Open)))
+            {
+                User user = new User(name, streamReader.ReadLine());
+                String line = "";
+                while (!String.IsNullOrEmpty(line = streamReader.ReadLine()))
+                {
+                    String courseName = line.Split('|')[0];
+                    int theme = Int32.Parse(line.Split('|')[1]);
+                    user.AddCouse(courseName,theme);
+                }
+                return user;
+            }
+
+            
+        }
     }
 }
