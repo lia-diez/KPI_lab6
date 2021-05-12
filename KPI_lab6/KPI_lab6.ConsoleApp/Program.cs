@@ -70,7 +70,7 @@ namespace KPI_lab6.ConsoleApp
 
         private static User OpenUser(String name)
         {
-            
+            return FileManager.OpenUser(standartUserPath, name);
         }
     }
 }

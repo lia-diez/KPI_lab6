@@ -9,5 +9,11 @@ namespace KPI_lab6.Lib
         private int _numberOfThemes;
         private int _percentage;
         private int _currentTheme;
+
+        public Course(string name, int currentTheme)
+        {
+            Name = name;
+            _currentTheme = currentTheme;
+        }
     }
 }
