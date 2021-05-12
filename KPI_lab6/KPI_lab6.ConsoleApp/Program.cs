@@ -22,15 +22,34 @@ namespace KPI_lab6.ConsoleApp
                 inputStr = Console.ReadLine();
             }
 
-            User currentUser;
+            User currentUser = null;
             if (inputStr == "1")
             {
-                currentUser=RegisterUser();
+                currentUser = RegisterUser();
             }
             else if (inputStr == "2")
             {
                 Console.WriteLine("Log In");
+                Console.WriteLine("Input user name:");
+                String name = Console.ReadLine();
+
+                if (FileManager.CheckFile(standartUserPath, name))
+                {
+                    currentUser = OpenUser(name);
+                    Console.WriteLine("Input user password: ");
+                    while (Console.ReadLine()!=currentUser.Password)
+                    {
+                        Console.WriteLine("Password is wrong! Try again!");
+                    }
+                    Console.WriteLine("Completed");
+                }
+                else
+                {
+                    Console.WriteLine("There is no such user");
+                }
             }
+
+            Console.WriteLine("End");
         }
 
         private static User RegisterUser()
@@ -40,8 +59,8 @@ namespace KPI_lab6.ConsoleApp
 
             if (FileManager.CheckFile(standartUserPath, name + ".us"))
             {
-                Console.WriteLine("User already exists!");
-                return null;
+                Console.WriteLine("User already exists, opens user portfolio...");
+                return OpenUser(name);
             }
 
             Console.WriteLine("Input your password: ");
@@ -63,7 +82,6 @@ namespace KPI_lab6.ConsoleApp
 
             FileManager.CreateAndWrite(path, password + "\n");
             return currUser;
-
         }
 
         public static void Courses(User user)
@@ -96,6 +114,11 @@ namespace KPI_lab6.ConsoleApp
                     break;
                 }
             }
+        }
+
+        public static User OpenUser(String name)
+        {
+            return FileManager.OpenUser(standartUserPath, name);
         }
     }
 }

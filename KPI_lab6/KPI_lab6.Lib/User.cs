@@ -6,10 +6,17 @@ namespace KPI_lab6.Lib
 {
     public class User
     {
+       
         private string _login;
         private string _password;
         private List<Course> _courses;
 
+        public String Password {
+            get
+            {
+                return _password;
+            }
+    }
         public int NumberOfCourses => _courses.Count;
 
         public User(string login, string password)
