@@ -10,9 +10,9 @@ namespace KPI_lab6.ConsoleApp
         static void Main(string[] args)
         {
             Console.WriteLine();
-            
+
             String inputStr = "";
-            while (inputStr!="1" && inputStr!="2")
+            while (inputStr != "1" && inputStr != "2")
             {
                 Console.Clear();
                 Console.WriteLine("1 - Register");
@@ -21,34 +21,42 @@ namespace KPI_lab6.ConsoleApp
                 inputStr = Console.ReadLine();
             }
 
-            String standartUserPath = @"../../../../Resources/Users/";
-            String standartCourcesPath = @"../../../../Resources/Cources/";
+            String standartUserPath = @"../../../../Resources/Users";
+            String standartCourcesPath = @"../../../../Resources/Cources";
 
-            if (inputStr=="1")
+
+            if (inputStr == "1")
             {
                 Console.WriteLine("Input users name: ");
                 String name = Console.ReadLine();
 
-                Console.WriteLine("Input your password: ");
-                String password = Console.ReadLine();
-
-                Console.WriteLine("Confirm your password: ");
-                while (Console.ReadLine()!=password)
+                if (FileManager.CheckFile(standartUserPath, name + ".us"))
                 {
-                    Console.WriteLine("Try again!");
-                    Console.WriteLine("Confirm your password: ");
+                    Console.WriteLine("User already exists!");
                 }
-                Console.WriteLine("Completed! ");
-                
-                String path = standartUserPath + name + ".user";
-                
-                FileManager.CreateAndWrite(path, password + "\n");
-            }else if (inputStr=="2")
+                else
+                {
+                    Console.WriteLine("Input your password: ");
+                    String password = Console.ReadLine();
+
+                    Console.WriteLine("Confirm your password: ");
+                    while (Console.ReadLine() != password)
+                    {
+                        Console.WriteLine("Try again!");
+                        Console.WriteLine("Confirm your password: ");
+                    }
+
+                    Console.WriteLine("Completed! ");
+
+                    String path = standartUserPath + "/" + name + ".us";
+
+                    FileManager.CreateAndWrite(path, password + "\n");
+                }
+            }
+            else if (inputStr == "2")
             {
                 Console.WriteLine("Log In");
             }
-            
-            
         }
     }
 }
