@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Xml;
 using KPI_lab6.Lib;
 
 namespace KPI_lab6.ConsoleApp
@@ -135,6 +137,23 @@ namespace KPI_lab6.ConsoleApp
                             Console.Clear();
                             Console.WriteLine(lections[lecId]);
                         }
+                    }
+                    else Console.WriteLine("Wrong input");
+                    break;
+                }
+                case "3":
+                {
+                    Console.WriteLine("Here is the list of accessible courses:");
+                    string[] paths = FileManager.GetDirectories(standartCoursesPath);
+                    for (int i = 0; i < paths.Length; i++)
+                    {
+                        Console.WriteLine($"{i}. {FileManager.GetNameFromPath(paths[i])}");
+                    }
+
+                    Console.WriteLine("Which course do you wish to add?\n");
+                    if (int.TryParse(Console.ReadLine(), out int courseIndex) && courseIndex < paths.Length)
+                    {
+                       FileManager.Write(standartUserPath + "/" + user.Name + ".us", $"{FileManager.GetNameFromPath(paths[courseIndex])}|0");
                     }
                     else Console.WriteLine("Wrong input");
                     break;

@@ -8,6 +8,8 @@ namespace KPI_lab6.Lib
     {
        
         private string _login;
+
+        public string Name => _login;
         private string _password;
         private List<Course> _courses;
 
@@ -40,6 +42,7 @@ namespace KPI_lab6.Lib
 
         public User()
         {
+            _courses = new List<Course>();
         }
 
         public void RegisterUser(String login, String password)
