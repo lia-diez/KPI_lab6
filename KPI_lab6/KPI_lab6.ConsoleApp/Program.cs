@@ -108,5 +108,10 @@ namespace KPI_lab6.ConsoleApp
                 }
             }
         }
+
+        public static User OpenUser(String name)
+        {
+            return FileManager.OpenUser(standartUserPath, name);
+        }
     }
 }
