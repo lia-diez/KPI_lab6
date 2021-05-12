@@ -14,19 +14,22 @@ namespace KPI_lab6.Lib
             Path = path;
         }
 
-        public List<string> ReadFiles()
+        public string[] GetFiles() => Directory.GetFiles(Path).ToArray();
+
+        public bool CheckFile(string path, string name)
         {
-            string[] filesList = Directory.GetFiles(Path).ToArray();
+            return String.Join("$", Directory.GetFiles(path)).Contains(path+'\\'+name);
+        }
+
+        public List<string> ReadFile(string filePath)
+        {
             List<string> data = new List<string>();
-            foreach (var filePath in filesList)
+            using (StreamReader sr = new StreamReader(filePath))
             {
-                using (StreamReader sr = new StreamReader(filePath))
+                string str;
+                while ((str = sr.ReadLine()) != null)
                 {
-                    string str;
-                    while ((str = sr.ReadLine()) != null)
-                    {
-                        data.Add(str);
-                    }
+                    data.Add(str);
                 }
             }
 
