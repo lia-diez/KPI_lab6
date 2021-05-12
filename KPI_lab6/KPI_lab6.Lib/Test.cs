@@ -8,7 +8,8 @@
 
         public Test(string[] input)
         {
-            _tasks = new string[input.Length,2];
+            _tasks = new string[input.Length, 6];
+            
         }
     }
 }

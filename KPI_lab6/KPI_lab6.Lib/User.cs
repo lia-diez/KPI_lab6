@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace KPI_lab6.Lib
 {
     public class User
     {
-       
         private string _login;
 
         public string Name => _login;
@@ -19,12 +17,11 @@ namespace KPI_lab6.Lib
             set => _courses = value;
         }
 
-        public String Password {
-            get
-            {
-                return _password;
-            }
-    }
+        public String Password
+        {
+            get { return _password; }
+        }
+
         public int NumberOfCourses = 0;
 
         public User(string login, string password)
@@ -34,9 +31,9 @@ namespace KPI_lab6.Lib
             _courses = new List<Course>();
         }
 
-        public void AddCouse(String name, int theme=0)
+        public void AddCouse(String name, int theme = 0)
         {
-            _courses.Add(new Course(name,theme));
+            _courses.Add(new Course(name, theme));
             NumberOfCourses++;
         }
 

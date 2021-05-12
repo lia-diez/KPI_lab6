@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Xml;
 using KPI_lab6.Lib;
 
 namespace KPI_lab6.ConsoleApp
@@ -9,7 +7,7 @@ namespace KPI_lab6.ConsoleApp
     {
         static String standartUserPath = @"../../../../Resources/Users";
         static String standartCoursesPath = @"../../../../Resources/Courses";
-        
+
         static void Main(string[] args)
         {
             Console.WriteLine();
@@ -39,7 +37,7 @@ namespace KPI_lab6.ConsoleApp
                 {
                     currentUser = OpenUser(name);
                     Console.WriteLine("Input user password: ");
-                    while (Console.ReadLine()!=currentUser.Password)
+                    while (Console.ReadLine() != currentUser.Password)
                     {
                         Console.WriteLine("Password is wrong! Try again!");
                     }
@@ -139,6 +137,7 @@ namespace KPI_lab6.ConsoleApp
                         }
                     }
                     else Console.WriteLine("Wrong input");
+
                     break;
                 }
                 case "3":
@@ -153,9 +152,11 @@ namespace KPI_lab6.ConsoleApp
                     Console.WriteLine("Which course do you wish to add?\n");
                     if (int.TryParse(Console.ReadLine(), out int courseIndex) && courseIndex < paths.Length)
                     {
-                       FileManager.Write(standartUserPath + "/" + user.Name + ".us", $"{FileManager.GetNameFromPath(paths[courseIndex])}|0");
+                        FileManager.Write(standartUserPath + "/" + user.Name + ".us",
+                            $"{FileManager.GetNameFromPath(paths[courseIndex])}|0");
                     }
                     else Console.WriteLine("Wrong input");
+
                     break;
                 }
             }
