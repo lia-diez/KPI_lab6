@@ -66,7 +66,7 @@ namespace KPI_lab6.ConsoleApp
 
         }
 
-        public static void Courses()
+        public static void Courses(User user)
         {
             Console.WriteLine();
 
@@ -85,6 +85,13 @@ namespace KPI_lab6.ConsoleApp
             {
                 case "1":
                 {
+                    user.GetCourses();
+                    break;
+                }
+                case "2":
+                {
+                    Console.WriteLine("Enter the index of the course");
+                    if (int.TryParse(Console.ReadLine(), out int courseIndex) && courseIndex<user.NumberOfCourses);
                     
                     break;
                 }

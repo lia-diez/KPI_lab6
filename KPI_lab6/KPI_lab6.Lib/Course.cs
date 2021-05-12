@@ -6,7 +6,13 @@ namespace KPI_lab6.Lib
     {
         public string Name;
         private List<Theme> _themes;
-        private int _numberOfThemes;
+
+        public List<Theme> Themes
+        {
+            get => _themes;
+            set => _themes = value;
+        }
+        
         private int _percentage;
         private int _currentTheme;
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KPI_lab6.Lib
 {
@@ -8,6 +9,8 @@ namespace KPI_lab6.Lib
         private string _login;
         private string _password;
         private List<Course> _courses;
+
+        public int NumberOfCourses => _courses.Count;
 
         public User(string login, string password)
         {
@@ -29,6 +32,17 @@ namespace KPI_lab6.Lib
         {
             _login = login;
             _password = password;
+        }
+
+        public void GetCourses()
+        {
+            string result = "";
+            for (int i = 0; i < _courses.Count; i++)
+            {
+                result += "i" + ". " + _courses[i].Name + '\n';
+            }
+
+            Console.WriteLine(result);
         }
     }
 }
