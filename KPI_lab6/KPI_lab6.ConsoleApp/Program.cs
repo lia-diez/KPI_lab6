@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Xml;
 using KPI_lab6.Lib;
 
 namespace KPI_lab6.ConsoleApp
@@ -61,17 +59,20 @@ namespace KPI_lab6.ConsoleApp
                 Console.WriteLine("Input user password: ");
                 while (Console.ReadLine() != currentUser.Password)
                 {
-                    Console.WriteLine("Password is wrong! Try again!");
+                    currentUser = OpenUser(name);
+                    Console.WriteLine("Input user password: ");
+                    while (Console.ReadLine()!=currentUser.Password)
+                    {
+                        Console.WriteLine("Password is wrong! Try again!");
+                    }
+                    Console.WriteLine("Completed"); 
+                    
                 }
 
                 Console.WriteLine("Completed");
             }
-            else
-            {
-                Console.WriteLine("There is no such user!");
-            }
-
-            return currentUser;
+            Courses(currentUser);
+           
         }
 
         private static User RegisterUser()
@@ -190,6 +191,15 @@ namespace KPI_lab6.ConsoleApp
                     int lecId = int.Parse(Console.ReadLine()) - 1;
                     Console.Clear();
                     Console.WriteLine(lections[lecId]);
+                    Console.WriteLine("Which course do you wish to add?\n");
+                    if (int.TryParse(Console.ReadLine(), out int courseIndex) && courseIndex < paths.Length)
+                    {
+                        FileManager.Write(standartUserPath + "/" + user.Name + ".us",
+                            $"{FileManager.GetNameFromPath(paths[courseIndex])}|0");
+                    }
+                    else Console.WriteLine("Wrong input");
+
+                    break;
                 }
             }
             else Console.WriteLine("Wrong input");
