@@ -95,5 +95,38 @@ namespace KPI_lab6.Lib
         {
             return path.Split('\\')[path.Split('\\').Length - 1].Split('.')[0];
         }
+
+        public static void UpdateCurrentTheme(String path, int courseId)
+        {
+            List<String> data = new List<string>();
+            using (StreamReader streamReader = new StreamReader(new FileStream(path, FileMode.Open)))
+            {
+                String input = "";
+                while ((input = streamReader.ReadLine())!=null)
+                {
+                    data.Add(input);
+                }
+            }
+
+            using (StreamWriter streamWriter = new StreamWriter(path, false))
+            {
+                for (int i = 0; i < data.Count; i++)
+                {
+                    if (i==courseId+1)
+                    {
+                        String str = data[i];
+                        str = str.Split('|')[0] + '|' + int.Parse(str.Split('|')[1]) + 1+"";
+                        streamWriter.Write(str);
+                    }
+                    else
+                    {
+                        streamWriter.Write(data[i]);
+                    }
+                }
+            }
+
+        }
+        
+        
     }
 }
