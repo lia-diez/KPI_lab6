@@ -197,8 +197,15 @@ namespace KPI_lab6.ConsoleApp
                     int lecId = int.Parse(Console.ReadLine()) - 1;
                     Console.Clear();
                     Console.WriteLine(lections[lecId]);
-                    
-                    
+                }
+
+                if (input == "2")
+                {
+                    float grade = user.GetTest(courseIndex).MakeTest();
+                    if (grade >= 0.8)
+                    {
+                        
+                    }
                 }
             }
             else Console.WriteLine("Wrong input");

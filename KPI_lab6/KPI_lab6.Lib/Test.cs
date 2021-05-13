@@ -27,7 +27,7 @@ namespace KPI_lab6.Lib
         {
             int mark = 0;
             Console.WriteLine("Enter 1 answer for each test: a, b, c or d.");
-            for (int i = 0; i < _tasks.Length; i++)
+            for (int i = 0; i < _tasks.GetLength(0); i++)
             {
                 Console.WriteLine("Test " + (i+1) + ". " + _tasks[i, 0]);
                 Console.WriteLine("a) "+_tasks[i, 1]);
@@ -41,6 +41,7 @@ namespace KPI_lab6.Lib
                 }
             }
 
+            Console.WriteLine(mark);
             return (float)mark / _maxPoint;
         }
     }
