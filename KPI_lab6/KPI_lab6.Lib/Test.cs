@@ -41,7 +41,7 @@ namespace KPI_lab6.Lib
                 }
             }
 
-            Console.WriteLine(mark);
+            Console.WriteLine("Your mark is: " + mark);
             return (float)mark / _maxPoint;
         }
     }

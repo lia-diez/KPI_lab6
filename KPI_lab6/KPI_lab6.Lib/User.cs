@@ -55,6 +55,8 @@ namespace KPI_lab6.Lib
             {
                 result += $"{i}. {_courses[i].Name}\n";
             }
+            
+            if (_courses.Count == 0) Console.WriteLine("You don't have any courses");
 
             Console.WriteLine(result);
         }

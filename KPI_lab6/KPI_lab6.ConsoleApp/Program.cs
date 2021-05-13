@@ -127,7 +127,7 @@ namespace KPI_lab6.ConsoleApp
                 Console.WriteLine("1 - Check my courses");
                 Console.WriteLine("2 - Choose course");
                 Console.WriteLine("3 - Add new course");
-                Console.Write("Please choose your variant:");
+                Console.Write("Please choose your variant: ");
                 inputStr = Console.ReadLine();
             }
 
@@ -164,7 +164,8 @@ namespace KPI_lab6.ConsoleApp
             if (int.TryParse(Console.ReadLine(), out int courseIndex) && courseIndex < paths.Length)
             {
                 FileManager.Write(standartUserPath + "/" + user.Name + ".us",
-                    $"\n{FileManager.GetNameFromPath(paths[courseIndex])}|0");
+                    $"{FileManager.GetNameFromPath(paths[courseIndex])}|0\n");
+                user.Courses.Add(new Course(FileManager.GetNameFromPath(paths[courseIndex]), 0));
             }
             else Console.WriteLine("Wrong input");
         }
@@ -172,7 +173,7 @@ namespace KPI_lab6.ConsoleApp
         private static void ChooseCourse(User user)
         {
             Console.Write("Enter the index of the course: ");
-            if (int.TryParse(Console.ReadLine(), out int courseIndex) && courseIndex < user.NumberOfCourses)
+            if (int.TryParse(Console.ReadLine(), out int courseIndex) && courseIndex < user.Courses.Count)
             {
                 user.Courses[courseIndex].Themes =
                     FileManager.GetThemes(standartCoursesPath + '\\' + user.Courses[courseIndex].Name);
