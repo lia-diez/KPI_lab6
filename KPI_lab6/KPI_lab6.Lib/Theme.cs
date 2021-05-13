@@ -9,6 +9,8 @@ namespace KPI_lab6.Lib
             get { return _lections; }
         }
 
+        public Test Test => _test;
+
         private string _name;
         private List<Lection> _lections;
         private Test _test;

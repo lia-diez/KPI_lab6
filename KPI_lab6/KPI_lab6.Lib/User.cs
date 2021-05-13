@@ -63,5 +63,10 @@ namespace KPI_lab6.Lib
         {
             return Courses[id].Themes[Courses[id].CurrentTheme].Lections;
         }
+        
+        public Test GetTest(int id)
+        {
+            return Courses[id].Themes[Courses[id].CurrentTheme].Test;
+        }
     }
 }
