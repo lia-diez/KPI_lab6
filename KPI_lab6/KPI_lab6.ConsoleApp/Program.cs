@@ -203,7 +203,7 @@ namespace KPI_lab6.ConsoleApp
                     float grade = user.GetTest(courseIndex).MakeTest();
                     if (grade >= 0.8)
                     {
-                        
+                        user.Courses[courseIndex].CurrentTheme++;
                     }
                 }
             }
