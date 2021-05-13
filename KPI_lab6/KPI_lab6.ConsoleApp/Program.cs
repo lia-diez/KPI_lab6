@@ -34,7 +34,11 @@ namespace KPI_lab6.ConsoleApp
 
             if (currentUser != null)
             {
-                Courses(currentUser);
+                while (true)
+                {
+                   Courses(currentUser); 
+                }
+                
             }
         }
 
