@@ -71,8 +71,9 @@ namespace KPI_lab6.ConsoleApp
 
                 Console.WriteLine("Completed");
             }
-            Courses(currentUser);
-           
+
+            return currentUser;
+
         }
 
         private static User RegisterUser()
@@ -158,7 +159,7 @@ namespace KPI_lab6.ConsoleApp
             if (int.TryParse(Console.ReadLine(), out int courseIndex) && courseIndex < paths.Length)
             {
                 FileManager.Write(standartUserPath + "/" + user.Name + ".us",
-                    $"{FileManager.GetNameFromPath(paths[courseIndex])}|0");
+                    $"\n{FileManager.GetNameFromPath(paths[courseIndex])}|0");
             }
             else Console.WriteLine("Wrong input");
         }
@@ -191,15 +192,8 @@ namespace KPI_lab6.ConsoleApp
                     int lecId = int.Parse(Console.ReadLine()) - 1;
                     Console.Clear();
                     Console.WriteLine(lections[lecId]);
-                    Console.WriteLine("Which course do you wish to add?\n");
-                    if (int.TryParse(Console.ReadLine(), out int courseIndex) && courseIndex < paths.Length)
-                    {
-                        FileManager.Write(standartUserPath + "/" + user.Name + ".us",
-                            $"{FileManager.GetNameFromPath(paths[courseIndex])}|0");
-                    }
-                    else Console.WriteLine("Wrong input");
-
-                    break;
+                    
+                    
                 }
             }
             else Console.WriteLine("Wrong input");
