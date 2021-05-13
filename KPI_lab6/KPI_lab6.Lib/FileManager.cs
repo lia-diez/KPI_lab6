@@ -95,5 +95,7 @@ namespace KPI_lab6.Lib
         {
             return path.Split('\\')[path.Split('\\').Length - 1].Split('.')[0];
         }
+        
+        
     }
 }
