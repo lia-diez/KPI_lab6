@@ -164,8 +164,9 @@ namespace KPI_lab6.ConsoleApp
             if (int.TryParse(Console.ReadLine(), out int courseIndex) && courseIndex < paths.Length)
             {
                 FileManager.Write(standartUserPath + "/" + user.Name + ".us",
-                    $"{FileManager.GetNameFromPath(paths[courseIndex])}|0\n");
-                user.Courses.Add(new Course(FileManager.GetNameFromPath(paths[courseIndex]), 0));
+                    $"{FileManager.GetNameFromPath(paths[courseIndex])}|1\n");
+                user.Courses.Add(new Course(FileManager.GetNameFromPath(paths[courseIndex]), 1));
+                
             }
             else Console.WriteLine("Wrong input");
         }
@@ -202,9 +203,11 @@ namespace KPI_lab6.ConsoleApp
 
                 if (input == "2")
                 {
+                    
                     float grade = user.GetTest(courseIndex).MakeTest();
                     if (grade >= 0.8)
                     {
+                        FileManager.UpdateCurrentTheme(standartUserPath+"/"+user.Name+".us",courseIndex);
                         user.Courses[courseIndex].CurrentTheme++;
                     }
                 }

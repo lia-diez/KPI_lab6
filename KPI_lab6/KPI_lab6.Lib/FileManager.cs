@@ -115,12 +115,12 @@ namespace KPI_lab6.Lib
                     if (i==courseId+1)
                     {
                         String str = data[i];
-                        str = str.Split('|')[0] + '|' + int.Parse(str.Split('|')[1]) + 1+"";
-                        streamWriter.Write(str);
+                        str = str.Split('|')[0] + '|' + (int)(int.Parse(str.Split('|')[1]) + 1)+"";
+                        streamWriter.WriteLine(str);
                     }
                     else
                     {
-                        streamWriter.Write(data[i]);
+                        streamWriter.WriteLine(data[i]);
                     }
                 }
             }
