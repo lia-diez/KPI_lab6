@@ -5,15 +5,8 @@ using System.Linq;
 
 namespace KPI_lab6.Lib
 {
-    public class FileManager
+    public static class FileManager
     {
-        private string Path;
-
-        public FileManager(string path)
-        {
-            Path = path;
-        }
-
         public static string[] GetFiles(String path) => Directory.GetFiles(path).ToArray();
 
         public static string[] GetDirectories(String path) => Directory.GetDirectories(path).ToArray();
@@ -93,6 +86,82 @@ namespace KPI_lab6.Lib
                     }
                 }
             }
+        }
+
+        public static void AddLection(string coursePath)
+        {
+            Console.WriteLine("Here is the list of themes:");
+            string[] paths = GetDirectories(coursePath);
+            for (int i = 0; i < paths.Length; i++)
+            {
+                Console.WriteLine($"{i}. {paths[i].Split('\\')[paths[i].Split('\\').Length - 1].Split('.')[1]}");
+            }
+
+            Console.WriteLine("Choose the theme you wish to append:");
+            if (int.TryParse(Console.ReadLine(), out int themeIndex) && themeIndex < paths.Length)
+            {
+                Console.WriteLine("Enter the name of lection");
+                string name = Console.ReadLine();
+                Console.WriteLine("Paste lection text");
+                String line = "";
+                string text = "";
+                while (!String.IsNullOrEmpty(line = Console.ReadLine()))
+                {
+                    text += line + '\n';
+                }
+
+                using (StreamWriter streamWriter = new StreamWriter(new FileStream(paths[themeIndex] + "/Lections/" + $"{name}.lec", FileMode.OpenOrCreate)))
+                {
+                    streamWriter.Write(text);
+                }
+            }
+            else Console.WriteLine("Wrong input");
+        }
+
+        public static void AddTheme(string coursePath)
+        {
+            Console.WriteLine("Enter the name of theme you wish to add in format 'number'. 'name'");
+            string name = Console.ReadLine();
+            Directory.CreateDirectory(coursePath + '/' + name);
+        }
+        
+        public static void AddTest(string coursePath)
+        {
+            Console.WriteLine("Here is the list of themes:");
+            string[] paths = GetDirectories(coursePath);
+            for (int i = 0; i < paths.Length; i++)
+            {
+                Console.WriteLine($"{i}. {paths[i].Split('\\')[paths[i].Split('\\').Length - 1].Split('.')[1]}");
+            }
+
+            Console.WriteLine("Choose the theme you wish to append:");
+            if (int.TryParse(Console.ReadLine(), out int themeIndex) && themeIndex < paths.Length)
+            {
+                Console.WriteLine("Enter the number of tests:");
+                int num = int.Parse(Console.ReadLine());
+                string text = "";
+                for (int i = 0; i < num; i++)
+                {
+                    Console.WriteLine("Enter the question");
+                    text += Console.ReadLine() + '|';
+                    Console.WriteLine("Enter 4 options, separated by enter");
+                    String line = "";
+                    while (!String.IsNullOrEmpty(line = Console.ReadLine()))
+                    {
+                        text += line + '|';
+                    }
+
+                    Console.WriteLine("Enter right answer - a, b, c or d");
+                    line = Console.ReadLine();
+                    text += line + '\n';
+                }
+                
+                using (StreamWriter streamWriter = new StreamWriter(new FileStream(paths[themeIndex] + "/" + "test.test", FileMode.Create)))
+                {
+                    streamWriter.Write(text);
+                }
+            }
+            else Console.WriteLine("Wrong input");
         }
 
         public static List<Theme> GetThemes(string path)

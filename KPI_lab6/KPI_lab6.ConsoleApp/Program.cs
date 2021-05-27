@@ -10,7 +10,6 @@ namespace KPI_lab6.ConsoleApp
 
         static void Main(string[] args)
         {
-            FileManager.GetUsers(standartUserPath, 4);
             Console.WriteLine();
 
             String inputStr = "";
