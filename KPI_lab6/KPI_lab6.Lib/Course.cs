@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace KPI_lab6.Lib
 {
@@ -20,6 +21,9 @@ namespace KPI_lab6.Lib
         }
 
         private int _percentage;
+
+        public int Percentage => ((_currentTheme+1) == 0 ? 0 : (int)Math.Floor((float) (_currentTheme+1) / _themes.Count * 100));
+        
         private int _currentTheme;
 
         public Course(string name, int currentTheme)

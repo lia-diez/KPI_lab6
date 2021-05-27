@@ -63,12 +63,12 @@ namespace KPI_lab6.Lib
 
         public List<Lection> GetLections(int id)
         {
-            return Courses[id].Themes[Courses[id].CurrentTheme].Lections;
+            return Courses[id].Themes[Courses[id].CurrentTheme + 1].Lections;
         }
         
         public Test GetTest(int id)
         {
-            return Courses[id].Themes[Courses[id].CurrentTheme].Test;
+            return Courses[id].Themes[Courses[id].CurrentTheme + 1].Test;
         }
     }
 }

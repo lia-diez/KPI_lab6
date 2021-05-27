@@ -70,6 +70,31 @@ namespace KPI_lab6.Lib
             }
         }
 
+        public static void GetUsers(String path, int themesNumber)
+        {
+            string[] userNames = GetFiles(path);
+            foreach (var name in userNames)
+            {
+                using (StreamReader streamReader =
+                    new StreamReader(new FileStream(name, FileMode.Open)))
+                {
+                    streamReader.ReadLine();
+                    string line = streamReader.ReadLine();
+                    if (!string.IsNullOrEmpty(line))
+                    {
+                        int theme = Int32.Parse(line.Split('|')[1]);
+
+                        Console.WriteLine("User name is " +
+                                          name.Split('\\')[name.Split('\\').Length - 1].Split('.')[0] +
+                                          ", grade is " +
+                                          ((theme) == 0
+                                              ? 0
+                                              : (int) Math.Floor((float) (theme) / themesNumber * 100)));
+                    }
+                }
+            }
+        }
+
         public static List<Theme> GetThemes(string path)
         {
             List<Theme> themes = new List<Theme>();
@@ -102,7 +127,7 @@ namespace KPI_lab6.Lib
             using (StreamReader streamReader = new StreamReader(new FileStream(path, FileMode.Open)))
             {
                 String input = "";
-                while ((input = streamReader.ReadLine())!=null)
+                while ((input = streamReader.ReadLine()) != null)
                 {
                     data.Add(input);
                 }
@@ -112,7 +137,7 @@ namespace KPI_lab6.Lib
             {
                 for (int i = 0; i < data.Count; i++)
                 {
-                    if (i==courseId+1)
+                    if (i == courseId + 1)
                     {
                         String str = data[i];
                         str = str.Split('|')[0] + '|' + (int)(int.Parse(str.Split('|')[1]) + 1)+"";
@@ -124,9 +149,6 @@ namespace KPI_lab6.Lib
                     }
                 }
             }
-
         }
-        
-        
     }
 }

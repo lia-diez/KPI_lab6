@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Microsoft.VisualBasic;
 
 namespace KPI_lab6.Lib
 {
@@ -26,6 +28,7 @@ namespace KPI_lab6.Lib
         public float MakeTest()
         {
             int mark = 0;
+            List<int> wrongTasks = new List<int>();
             Console.WriteLine("Enter 1 answer for each test: a, b, c or d.");
             for (int i = 0; i < _tasks.GetLength(0); i++)
             {
@@ -39,9 +42,12 @@ namespace KPI_lab6.Lib
                 {
                     mark += _pointsForTask;
                 }
+                else
+                    wrongTasks.Add(i+1);
             }
 
             Console.WriteLine("Your mark is: " + mark);
+            Console.WriteLine("You got wrong answers in tests number " + String.Join(", ", wrongTasks));
             return (float)mark / _maxPoint;
         }
     }

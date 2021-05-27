@@ -10,6 +10,7 @@ namespace KPI_lab6.ConsoleApp
 
         static void Main(string[] args)
         {
+            FileManager.GetUsers(standartUserPath, 4);
             Console.WriteLine();
 
             String inputStr = "";
@@ -178,12 +179,14 @@ namespace KPI_lab6.ConsoleApp
             {
                 user.Courses[courseIndex].Themes =
                     FileManager.GetThemes(standartCoursesPath + '\\' + user.Courses[courseIndex].Name);
+                Console.WriteLine("Your rate for this course is " + user.Courses[courseIndex].Percentage + " from 100");
                 Console.WriteLine("1 - Choose lection");
                 Console.WriteLine("2 - Pass test");
                 Console.WriteLine("Input your choice: ");
                 String input = Console.ReadLine();
                 while (input != "1" && input != "2")
                 {
+                    input = Console.ReadLine();
                     Console.WriteLine("Wrong answer! Try again: ");
                 }
 
